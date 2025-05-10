@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { requestData } from '../service/request';
 import movieContext from '../context/movieContext';
+import MovieCard from '../components/movieCard';
 
 function Home() {
   const [apiData, setApiData] = useState();
@@ -11,6 +12,7 @@ function Home() {
       const data = await requestData();
       setApiData(data);
       context.serDataApi(data)
+      console.log(data);
     };
 
     fetchData()
@@ -18,7 +20,7 @@ function Home() {
 
   return (
     <div>
-      { apiData?.map((item, key) => <p key={key}>{item.title}</p>) }
+      <MovieCard />
     </div>
   )
 }
