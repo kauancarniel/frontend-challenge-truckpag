@@ -5,7 +5,7 @@ function Header() {
       <p
         className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
       >
-        Explore the magical world of Studio Ghibli films. Mark your favorites and keep track of what you've watched.
+       {"Explore the magical world of Studio Ghibli films. Mark your favorites and keep track of what you've watched."}
       </p>
     </>
   )

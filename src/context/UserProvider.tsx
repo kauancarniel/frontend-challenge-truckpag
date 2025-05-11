@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import userContext from './userContext';
 import { type IComment, type UserProviderProps } from '../interfaces/IUser';
 

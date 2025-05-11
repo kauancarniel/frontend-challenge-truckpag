@@ -22,6 +22,8 @@ export interface IMovie {
 export interface MovieContextValue {
   dataApi: IMovie[];
   setDataApi: (movies: IMovie[]) => void;
+  defaultDataApi: IMovie[];
+  setDefaultDataApi: (movies: IMovie[]) => void;
 }
 
 export interface MovieProviderProps {

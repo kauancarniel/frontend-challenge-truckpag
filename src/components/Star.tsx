@@ -1,7 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-function Star({ grade, setComment, assessment }) {
+function Star({ grade, setComment, assessment }: {grade: number, setComment: (assessment: { rating: number, comment: string }) => void, assessment: { rating: number, comment: string }}) {
   const { rating } = assessment;
   return (
     <>
@@ -20,14 +17,5 @@ function Star({ grade, setComment, assessment }) {
     </>
   );
 }
-
-Star.propTypes = {
-  grade: PropTypes.number.isRequired,
-  setComment: PropTypes.func.isRequired,
-  assessment: PropTypes.shape({
-    rating: PropTypes.number.isRequired,
-    comment: PropTypes.string.isRequired,
-  }).isRequired,
-};
 
 export default Star;

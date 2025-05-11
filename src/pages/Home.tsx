@@ -7,13 +7,14 @@ import SearchBar from '../components/SearchBar';
 
 function Home() {
   const [apiData, setApiData] = useState();
-  const { dataApi, setDataApi } = useContext(movieContext);
+  const { dataApi, setDataApi, setDefaultDataApi } = useContext(movieContext);
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await requestData();
       setApiData(apiData);
       setDataApi(data)
+      setDefaultDataApi(data);
       console.log(data);
     };
 
