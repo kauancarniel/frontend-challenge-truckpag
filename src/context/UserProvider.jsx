@@ -1,21 +1,25 @@
-import React, { use, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import userContext from './userContext';
 import PropTypes from 'prop-types';
 
 function UserProvider({ children }) {
-  const [favoriteIds, setFavIds] = useState([]);
-  const [favorite, setFavorite] = useState(false);
-  const [watched, setWatched] = useState(false);
+  const [favoriteIds, setFavIds] = useState(JSON.parse(localStorage.getItem('favoriteIds')) || []);
+  const [watchedIds, setWatchedIds] = useState(JSON.parse(localStorage.getItem('watchedIds')) || []);
 
+  useEffect(() => {
+    localStorage.setItem('favoriteIds', JSON.stringify(favoriteIds));
+  }, [favoriteIds]);
+
+  useEffect(() => {
+    localStorage.setItem('watchedIds', JSON.stringify(watchedIds));
+  }, [watchedIds]);
 
   const userInfos = useMemo(() => ({
-    favorite,
-    setFavorite,
-    watched,
-    setWatched,
+    watchedIds,
+    setWatchedIds,
     favoriteIds,
     setFavIds,
-  }), [favorite, watched, favoriteIds]);
+  }), [watchedIds, favoriteIds]);
 
   return (
     <userContext.Provider value={ userInfos }>
