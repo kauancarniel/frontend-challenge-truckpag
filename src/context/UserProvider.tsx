@@ -1,11 +1,11 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import userContext from './userContext';
-import PropTypes from 'prop-types';
+import { type IComment, type UserProviderProps } from '../interfaces/IUser';
 
-function UserProvider({ children }) {
-  const [favoriteIds, setFavIds] = useState(JSON.parse(localStorage.getItem('favoriteIds')) || []);
-  const [watchedIds, setWatchedIds] = useState(JSON.parse(localStorage.getItem('watchedIds')) || []);
-  const [comments, setComments] = useState([])
+function UserProvider({ children }: UserProviderProps) {
+  const [favoriteIds, setFavIds] = useState<string[]>(JSON.parse(localStorage.getItem('favoriteIds') as string ) || []);
+  const [watchedIds, setWatchedIds] = useState<string[]>(JSON.parse(localStorage.getItem('watchedIds') as string ) || []);
+  const [comments, setComments] = useState<IComment[]>([])
 
   useEffect(() => {
     localStorage.setItem('favoriteIds', JSON.stringify(favoriteIds));
@@ -30,10 +30,6 @@ function UserProvider({ children }) {
     </userContext.Provider>
   );
 }
-
-UserProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 
 export default UserProvider;

@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
-import movieContext from '../context/movieContext';
+import { useContext } from 'react';
 import userContext from '../context/userContext';
 import FormCommentary from './FormCommentary';
 import './MovieCard.css';
+import type { IMovie } from '../interfaces/IMovie';
 
-function MovieCard() {
-  const movcontext = useContext(movieContext);
+function MovieCard({ movie, key }: { movie: IMovie, key: number }) {	
   const { favoriteIds, setFavIds, watchedIds, setWatchedIds } = useContext(userContext)
 
-  const addMovieToWatched = ({ id }) => {
+  const addMovieToWatched = ({ id }: { id: string }) => {
     const checkWatched = watchedIds.some((m) => m === id)
     if (checkWatched) {
       const newWatched = watchedIds.filter((m) => m !== id)
@@ -19,7 +18,7 @@ function MovieCard() {
     }
   };
 
-  const addMovieToFav = ({ id }) => {
+  const addMovieToFav = ({ id }: { id: string }) => {
     const checkFav = favoriteIds.some((m) => m === id)
     if (checkFav) {
       const newFavs = favoriteIds.filter((m) => m !== id)
@@ -32,9 +31,8 @@ function MovieCard() {
 
   return (
     <>
-      { movcontext.dataApi.map((movie, key) => (
         <div key={ key } className="movieCard">
-          <img src={movie.movie_banner}/>
+          <img src={movie.image}/>
           <h2>{ movie.title }</h2>
           <p>{ movie.release_date }</p>
           <p>{ movie.running_time }</p>
@@ -53,7 +51,6 @@ function MovieCard() {
           </button>
           <FormCommentary />
         </div>
-      )) }
     </>
   )
 };

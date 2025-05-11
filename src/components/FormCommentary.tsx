@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Star from './Star';
 import './FormCommentary.css';
 
@@ -36,11 +36,11 @@ function FormCommentary() {
           <div className="flex flex-col items-center gap-y-6">
             <textarea
               className="textarea"
-              maxLength="200"
+              maxLength={200}
               required
               name="comment"
-              cols="40"
-              rows="3"
+              cols={40}
+              rows={3}
               value={ assessment.comment }
               onChange={ ({ target: { name, value } }) => {
                 setComment({ ...assessment, [name]: value });
