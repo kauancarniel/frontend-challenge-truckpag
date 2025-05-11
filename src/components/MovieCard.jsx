@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import movieContext from '../context/movieContext';
 import userContext from '../context/userContext';
+import FormCommentary from './FormCommentary';
 import './MovieCard.css';
 
 function MovieCard() {
@@ -50,6 +51,7 @@ function MovieCard() {
             >
             Add to Favorite
           </button>
+          <FormCommentary />
         </div>
       )) }
     </>

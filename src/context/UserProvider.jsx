@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 function UserProvider({ children }) {
   const [favoriteIds, setFavIds] = useState(JSON.parse(localStorage.getItem('favoriteIds')) || []);
   const [watchedIds, setWatchedIds] = useState(JSON.parse(localStorage.getItem('watchedIds')) || []);
+  const [comments, setComments] = useState([])
 
   useEffect(() => {
     localStorage.setItem('favoriteIds', JSON.stringify(favoriteIds));
@@ -19,7 +20,9 @@ function UserProvider({ children }) {
     setWatchedIds,
     favoriteIds,
     setFavIds,
-  }), [watchedIds, favoriteIds]);
+    comments,
+    setComments
+  }), [watchedIds, favoriteIds, comments]);
 
   return (
     <userContext.Provider value={ userInfos }>
