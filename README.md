@@ -43,7 +43,10 @@ Você deverá desenvolver uma aplicação que consome a API pública do [Studio 
 
 - [ ]  Utilizar **TypeScript**
 - [ ]  Implementar responsividade básica
-- [ ]  Salvar
+- [ ]  Persistir os seguintes dados no LocalStorage:
+    - Lista de filmes e suas características (assistido / favorito / anotação / avaliação)
+    - Filtros selecionados
+    - Opção de ordenação selecionada
 - [ ]  Adicionar mensagens toast para as operações
     - Marcar/desmarcar o filme como assistido, favorito;
     - Adicionar/editar/remover anotação;
