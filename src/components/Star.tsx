@@ -1,19 +1,25 @@
-function Star({ grade, setComment, assessment }: {grade: number, setComment: (assessment: { rating: number, comment: string }) => void, assessment: { rating: number, comment: string }}) {
+function Star({ grade, setComment, assessment, commentId }: { 
+  grade: number, 
+  setComment: (assessment: { rating: number, comment: string }) => void, 
+  assessment: { rating: number, comment: string },
+  commentId: string
+}) {
   const { rating } = assessment;
   return (
     <>
       <input
         type="checkbox"
-        id={ `star${grade}` }
-        key={ `star${grade}` }
-        name="rating"
-        value={ grade }
-        checked={ Number(grade) <= Number(rating) }
-        onChange={ ({ target: { name, value } }) => {
-          setComment({ ...assessment, [name]: Number(value) });
-        } }
+        id={`star${commentId}-${grade}`}
+        key={`star${commentId}-${grade}`}
+        min={1}
+        name={`rating-${commentId}`}
+        value={grade}
+        checked={Number(grade) <= Number(rating)}
+        onChange={({ target: { name, value } }) => {
+          setComment({ ...assessment, rating: Number(value) });
+        }}
       />
-      <label htmlFor={ `star${grade}` } title="text" />
+      <label htmlFor={`star${commentId}-${grade}`} title="text" />
     </>
   );
 }

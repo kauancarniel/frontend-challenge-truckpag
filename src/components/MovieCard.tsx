@@ -49,7 +49,7 @@ function MovieCard({ movie, key }: { movie: IMovie, key: number }) {
             >
             Add to Favorite
           </button>
-          <FormCommentary />
+          <FormCommentary id={ movie.id }/>
         </div>
     </>
   )
