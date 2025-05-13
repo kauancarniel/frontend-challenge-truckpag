@@ -4,6 +4,7 @@ import movieContext from '../context/movieContext';
 import MovieCard from '../components/MovieCard';
 import Header from '../components/Header.js';
 import SearchBar from '../components/SearchBar';
+import Filters from '../components/Filters.js';
 
 function Home() {
   const [apiData, setApiData] = useState();
@@ -25,6 +26,7 @@ function Home() {
     <div>
       <Header />
       <SearchBar />
+      <Filters />
       { dataApi.map((movie, key) => (
         <MovieCard movie={ movie } key={ key } />
       )) }

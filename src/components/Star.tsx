@@ -15,7 +15,7 @@ function Star({ grade, setComment, assessment, commentId }: {
         name={`rating-${commentId}`}
         value={grade}
         checked={Number(grade) <= Number(rating)}
-        onChange={({ target: { name, value } }) => {
+        onChange={({ target: { value } }) => {
           setComment({ ...assessment, rating: Number(value) });
         }}
       />

@@ -13,6 +13,7 @@ function SearchBar() {
     if (searchTerm.length === 0) {
       setDataApi(defaultDataApi);
     }
+  
     else if (isChecked) {
       const filtered = dataApi.filter((m) => 
         m.title.toLowerCase().includes(searchTerm.toLowerCase()) || m.description.toLowerCase().includes(searchTerm.toLowerCase())
@@ -101,10 +102,10 @@ function SearchBar() {
       <input type='checkbox' onClick={() => setIsChecked(!isChecked)} />
       <label htmlFor="checkbox">Include synopsis in search</label>
       <select 
-          className='bg-black' 
-          value={orderBy}
-          onChange={({ target }) => setOrderBy(target.value) }
-        >
+        className='bg-black' 
+        value={orderBy}
+        onChange={({ target }) => setOrderBy(target.value) }
+      >
         <option value="Default">Default</option>
         <option value="TitleAZ">Title (A-Z)</option>
         <option value="TitleZA">Title (Z-A)</option>
