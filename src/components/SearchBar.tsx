@@ -93,16 +93,49 @@ function SearchBar() {
   
   return (
     <div className="search-bar">
+    <div className="relative">
+      <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+        <svg
+          className="h-4 w-4 text-muted-foreground"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"
+          />
+        </svg>
+      </div>
       <input
         type="text"
         placeholder="Search..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2
+          text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm
+          file:font-medium placeholder:text-muted-foreground focus-visible:outline-none
+          focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
+          disabled:cursor-not-allowed disabled:opacity-50 pl-10 pr-10"
       />
-      <input type='checkbox' onClick={() => setIsChecked(!isChecked)} />
-      <label htmlFor="checkbox">Include synopsis in search</label>
+    </div>
+      <div className='flex flex-row justify-between items-center gap-2 ml-1 w-full'>
+        <div className='flex flex-row gap-2'>
+          <input
+            type='checkbox'
+            onClick={() => setIsChecked(!isChecked)}
+          />
+          <label htmlFor="checkbox">Include synopsis in search</label>
+        </div>
+      <div className='flex flex-row gap-2'>
+      <p className='mt-1'>Order By:</p>
       <select 
-        className='bg-black' 
+        className='bg-gray-900 text-gray-100 text-sm rounded-md px-3 py-1.5 border border-gray-700 
+            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+            hover:border-gray-600 transition-colors cursor-pointer' 
         value={orderBy}
         onChange={({ target }) => setOrderBy(target.value) }
       >
@@ -116,6 +149,8 @@ function SearchBar() {
         <option value="RatingH">Rating (Highest)</option>
         <option value="RatingL">Rating (Lowest)</option>
       </select>
+      </div>
+      </div>
     </div>
   );
 }

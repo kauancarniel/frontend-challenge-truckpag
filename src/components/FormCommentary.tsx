@@ -43,24 +43,25 @@ const handleSubmit = () => {
 
   return (
     <>
-      <div className="w-full flex flex-wrap justify-around gap-6">
+      <div className="w-full flex flex-wrap justify-around gap-2">
         <form
           onSubmit={(event) => {
             event.preventDefault();
 
             if (assessment.rating === 0) console.log('não é possivel adicionar um comentario sem nota');
 
-            !showComment ? handleSubmit() : setShowComment(false);
+            else !showComment ? handleSubmit() : setShowComment(false);
           }}
         >
           { showComment ? (
             <div className="flex items-center gap-x-2 min-w-[120px]">
-              <p className="mb-0 text-[#ffa723] text-[20px]">
+              <p className='m-1 mr-2'>Your Rating:</p>
+              <p className="mb-0 text-[#ffa723] text-[32px]">
                 {Array.from({ length: statiComment.rating }, () => star).join('')}
               </p>
             </div>
           ) : (
-            <div className="flex justify-between px-1 items-center">
+            <div className="flex justify-start px-1 items-center gap-6">
               <h4 className="m-1">Your Rating:</h4>
               <div className="rating flex flex-row-reverse justify-end">
                 {grades.map((grade) => (
@@ -75,9 +76,9 @@ const handleSubmit = () => {
               </div>
             </div>
           )}
-          <div className="flex flex-col items-center gap-y-6">
+          <div className="flex flex-col items-center">
             <textarea
-              className="textarea"
+              className="textarea w-full h-full"
               maxLength={200}
               minLength={0}
               required
@@ -92,7 +93,7 @@ const handleSubmit = () => {
               placeholder="Write your thoughts about this movie..."
             />
             <button
-              className="button"
+              className="button flex justify-arround"
               id="button"
             >
               { !showComment ? "Comment" : "Edit Comment" }

@@ -30,22 +30,23 @@ function Filters() {
   }, [showFavs, showWatched, showCommented, favoriteIds, watchedIds, commentedMovieIds, defaultDataApi, setDataApi]);
 
   return (
-    <div className='ml-0'>
+    <div className='flex flex-rpw justify-start gap-2 mt-2'>
+      <p className='mt-2'>Filters:</p>
       <button 
         onClick={() => setShowWatched(!showWatched)} 
-        className={showWatched ? "greenBtn" : "redBtn"}
+        className={showWatched ? "greenBtn" : "bg-gray-900"}
       >
         Watched
       </button>
       <button 
         onClick={() => setShowFavs(!showFavs)} 
-        className={showFavs ? "greenBtn" : "redBtn"}
+        className={showFavs ? "greenBtn" : "bg-gray-900"}
       >
         Favorites
       </button>
       <button 
         onClick={() => setShowCommented(!showCommented)} 
-        className={showCommented ? "greenBtn" : "redBtn"}
+        className={showCommented ? "greenBtn" : "bg-gray-900"}
       >
         With Comments
       </button>

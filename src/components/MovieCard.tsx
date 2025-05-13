@@ -1,58 +1,91 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import userContext from '../context/userContext';
 import FormCommentary from './FormCommentary';
 import './MovieCard.css';
 import type { IMovie } from '../interfaces/IMovie';
 
-function MovieCard({ movie, key }: { movie: IMovie, key: number }) {	
-  const { favoriteIds, setFavIds, watchedIds, setWatchedIds } = useContext(userContext)
+function MovieCard({ movie }: { movie: IMovie }) {
+  const { favoriteIds, setFavIds, watchedIds, setWatchedIds } = useContext(userContext);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const addMovieToWatched = ({ id }: { id: string }) => {
-    const checkWatched = watchedIds.some((m) => m === id)
+    const checkWatched = watchedIds.some((m) => m === id);
     if (checkWatched) {
-      const newWatched = watchedIds.filter((m) => m !== id)
-      setWatchedIds(newWatched);
-    }
-    else if (!checkWatched) {
-      setWatchedIds([...watchedIds, id])
+      setWatchedIds(watchedIds.filter((m) => m !== id));
+    } else {
+      setWatchedIds([...watchedIds, id]);
     }
   };
 
   const addMovieToFav = ({ id }: { id: string }) => {
-    const checkFav = favoriteIds.some((m) => m === id)
+    const checkFav = favoriteIds.some((m) => m === id);
     if (checkFav) {
-      const newFavs = favoriteIds.filter((m) => m !== id)
-      setFavIds(newFavs);
-    }
-    else if (!checkFav) {
-      setFavIds([...favoriteIds, id])
+      setFavIds(favoriteIds.filter((m) => m !== id));
+    } else {
+      setFavIds([...favoriteIds, id]);
     }
   };
 
   return (
-    <>
-        <div key={ key } className="movieCard">
-          <img src={movie.image}/>
-          <h2>{ movie.title }</h2>
-          <p>{ movie.release_date }</p>
-          <p>{ movie.running_time }</p>
-          <p>{movie.description}</p>
-          <p>{`diretor: ${movie.director} produtor: ${movie.producer}`}</p>
-          <p>{ movie.rt_score }</p>
-          <button onClick={ () => addMovieToWatched(movie) }
-            className={ watchedIds.some(id => id === movie.id) ? "redBtn" : "greenBtn" }
+    <div className="bg-gray-900 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
+      <div className="relative aspect-[3/4]">
+        <img
+          src={movie.image}
+          className="w-full h-full object-cover"
+          alt={movie.title}
+        />
+        <div className="absolute top-0.5 right-0.5 flex space-x-0.5">
+          <button
+            onClick={() => addMovieToWatched(movie)}
+            className={`px-3 py-1 rounded-full text-sm font-bold ${
+              watchedIds.some(id => id === movie.id) ? "text-green-500" : "text-white"
+            }`}
           >
-            Mark Watched
+            👁
           </button>
-          <button onClick={() => addMovieToFav(movie) }
-          className={ favoriteIds.some(id => id === movie.id) ? "redBtn" : "greenBtn" }
-            >
-            Add to Favorite
+          <button
+            onClick={() => addMovieToFav(movie)}
+            className={`px-3 py-1 rounded-full text-sm font-bold ${
+              favoriteIds.some(id => id === movie.id) ? "text-red-500" : "text-white"
+            }`}
+          >
+            ♥
           </button>
-          <FormCommentary id={ movie.id }/>
         </div>
-    </>
-  )
+      </div>
+
+      <div className="p-4 flex-grow">
+        <h2 className="text-xl font-bold text-white mb-2">{movie.title}</h2>
+        
+        <div className="flex justify-between text-sm text-gray-400 mb-2">
+          <span>{movie.release_date}</span>
+          <span>{movie.running_time} min</span>
+        </div>
+
+        <div className="mb-3 bg-transparent text-white text-xs px-1 py-0.5 border-none shadow-none">
+          <p className={`text-sm text-gray-300 ${!isExpanded && "line-clamp-3"}`}>
+            {movie.description}
+          </p>
+          {movie.description.length > 100 && (
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="text-white-400 bg text-xs mt-1 "
+            >
+              {isExpanded ? "Read Less" : "Read More"}
+            </button>
+          )}
+        </div>
+        
+        <div className="text-xs text-gray-400 mb-1">
+          <p><span className="font-semibold mr-2">Director:</span> {movie.director}</p>
+          <p><span className="font-semibold mr-2">Producer:</span> {movie.producer}</p>
+          <p><span className="font-semibold mr-2">Score:</span>{movie.rt_score}%</p>
+        </div>
+
+        <FormCommentary id={movie.id} />
+      </div>
+    </div>
+  );
 };
 
 export default MovieCard;
