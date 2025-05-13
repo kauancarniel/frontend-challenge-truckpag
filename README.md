@@ -49,17 +49,17 @@ Aplicação React que consome a API do Studio Ghibli para exibir filmes com func
 
 1. **Clone o repositório**  
    ```bash
-   git clone git@github.com:kauancarniel/frontend-challenge-truckpag.git
-   cd ghibli-films-explorer
+   $ git clone git@github.com:kauancarniel/frontend-challenge-truckpag.git
+   $ cd ghibli-films-explorer
 
 2. **Instalar dependências**
    ```bash
-  npm install
-  # ou
-  yarn install
+  $ npm install
+  ou
+  $ yarn install
 
 3. **Iniciar servidor de desenvolvimento**
    ```bash
-  npm run dev
-  # ou
-  yarn dev
+  $ npm run dev
+  ou
+  $ yarn dev
