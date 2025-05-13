@@ -1,54 +1,65 @@
-# React + TypeScript + Vite
+# Studio Ghibli Films Explorer - README
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Visão Geral
 
-Currently, two official plugins are available:
+Aplicação React que consome a API do Studio Ghibli para exibir filmes com funcionalidades de filtro, marcação e anotações pessoais.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Tecnologias Utilizadas
 
-## Expanding the ESLint configuration
+- **React** com TypeScript  
+- **Vite** como build tool  
+- **Axios** para requisições HTTP  
+- **React Router** para navegação  
+- **Context API** para gerenciamento de estado global  
+- **Tailwind CSS** para desenvolver o CSS
+- **React Toastify** para notificações  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ✨ Funcionalidades Implementadas
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### ✅ Obrigatórios
+- Listagem de filmes com:  
+  - Título, imagem, ano, duração  
+  - Sinopse, diretor, produtor  
+  - Nota de avaliação  
+- Marcar/desmarcar como assistido  
+- Marcar/desmarcar como favorito  
+- Filtro por título  
+- Filtro por sinopse  
+- Anotações pessoais com avaliação por estrelas (1-5)  
+- Filtros por:  
+  - Assistido/Favorito  
+  - Com anotação  
+  - Número de estrelas  
+- Ordenação por:  
+  - Título (A-Z/Z-A)  
+  - Duração  
+  - Avaliação pessoal  
+  - Nota de avaliação 
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 💎 Desejáveis
+- Desenvolvido com TypeScript
+- Responsividade básica
+- Persistência local dos dados  
+- Notificações Toast para ações  
+- Separação clara de componentes/services  
+- Uso de Context API para estado global  
+- Estilização com Styled-components  
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Como Executar
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+1. **Clone o repositório**  
+   ```bash
+   git clone git@github.com:kauancarniel/frontend-challenge-truckpag.git
+   cd ghibli-films-explorer
+
+2. **Instalar dependências**
+   ```bash
+  npm install
+  # ou
+  yarn install
+
+3. **Iniciar servidor de desenvolvimento**
+   ```bash
+  npm run dev
+  # ou
+  yarn dev

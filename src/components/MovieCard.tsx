@@ -3,7 +3,6 @@ import userContext from '../context/userContext';
 import FormCommentary from './FormCommentary';
 import type { IMovie } from '../interfaces/IMovie';
 import { toast } from 'react-toastify';
-import './MovieCard.css';
 
 function MovieCard({ movie }: { movie: IMovie }) {
   const { favoriteIds, setFavIds, watchedIds, setWatchedIds } = useContext(userContext);
