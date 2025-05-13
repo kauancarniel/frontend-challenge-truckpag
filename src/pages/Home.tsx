@@ -17,7 +17,6 @@ function Home() {
       setApiData(apiData);
       setDataApi(data)
       setDefaultDataApi(data);
-      console.log(data);
     };
 
     fetchData()
