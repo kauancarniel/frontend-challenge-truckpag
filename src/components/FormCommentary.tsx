@@ -51,10 +51,9 @@ const handleSubmit = () => {
           onSubmit={(event) => {
             event.preventDefault();
 
-            if (assessment.rating === 0) console.log('não é possivel adicionar um comentario sem nota');
+            if (assessment.rating === 0) toast("Rate the movie before commenting")
 
             else {
-              toast("Rate the movie before commenting")
               !showComment ? handleSubmit() : setShowComment(false);
             }
           }}
