@@ -1,80 +1,61 @@
-## 🎯 **Objetivo do Desafio**
+# Studio Ghibli Films Explorer - README
 
-Avaliar sua habilidade de desenvolver uma aplicação com **React**, utilizando **JavaScript** (ou **TypeScript**, se desejar), consumindo uma **API pública real** e aplicando boas práticas de estruturação de componentes, manipulação de estado e interações com o usuário.
+## 📌 Visão Geral
 
-## 📜 **Descrição**
+Aplicação React que consome a API do Studio Ghibli para exibir filmes com funcionalidades de filtro, marcação e anotações pessoais.
 
-Você deverá desenvolver uma aplicação que consome a API pública do [Studio Ghibli](https://ghibliapi.vercel.app/#tag/Films) e exibe uma lista de filmes do estúdio com suas respectivas informações e algumas opções de filtro/ações nessa lista, conforme especificado a seguir:
+## 🛠 Tecnologias Utilizadas
 
-> ⚠️ O desafio deve ser implementado utilizando a versão mais recente do React com **javascript** ou **typescript.** Busque desenvolver uma interface agradável e legível (não precisa ser um design incrível, mas bem organizada)
+- **React** com TypeScript  
+- **Vite** como build tool  
+- **Axios** para requisições HTTP  
+- **React Router** para navegação  
+- **Context API** para gerenciamento de estado global  
+- **Tailwind CSS** para desenvolver o CSS
+- **React Toastify** para notificações  
 
-
-## 🔎 **Requisitos Funcionais**
+## ✨ Funcionalidades Implementadas
 
 ### ✅ Obrigatórios
+- Listagem de filmes com:  
+  - Título, imagem, ano, duração  
+  - Sinopse, diretor, produtor  
+  - Nota de avaliação  
+- Marcar/desmarcar como assistido  
+- Marcar/desmarcar como favorito  
+- Filtro por título  
+- Filtro por sinopse  
+- Anotações pessoais com avaliação por estrelas (1-5)  
+- Filtros por:  
+  - Assistido/Favorito  
+  - Com anotação  
+  - Número de estrelas  
+- Ordenação por:  
+  - Título (A-Z/Z-A)  
+  - Duração  
+  - Avaliação pessoal  
+  - Nota de avaliação 
 
-- [ ]  Listar filmes com as seguintes informações
-    - Imagem do filme
-    - Título
-    - Ano de lançamento
-    - Duração
-    - Sinopse
-    - Diretor e Produtor
-    - Nota de avaliação (campo `rt_score`)
-- [ ]  Marcar o filme como assistido
-- [ ]  Marcar o filme como favorito
-- [ ]  Filtrar os filmes por título através de um campo de texto
-- [ ]  Buscar palavras do filtro de texto na sinopse do filme
-    - Ao selecionar a opção “Incluir sinopse na busca**”,** além de filtrar os filmes, também deve destacar o texto buscado na sinopse com alguma cor.
-- [ ]  Adicionar anotações de texto a um filme
-- [ ]  Adicionar, junto à anotação, uma avaliação pessoal de 1 a 5 estrelas
-- [ ]  Filtrar os filmes por:
-    - Assistido
-    - Favorito
-    - Com anotação.
-    - Número de estrelas
-- [ ]  Ordenar filmes (de forma crescente e decrescente) por:
-    - Título
-    - Duração
-    - Avaliação pessoal
-    - Nota de avaliação (campo `rt_score`)
+### 💎 Desejáveis
+- Desenvolvido com TypeScript
+- Responsividade básica
+- Persistência local dos dados  
+- Notificações Toast para ações  
+- Separação clara de componentes/services  
+- Uso de Context API para estado global  
+- Estilização com Styled-components  
 
-### ✨ Desejáveis
+## 🚀 Como Executar
 
-- [ ]  Utilizar **TypeScript**
-- [ ]  Implementar responsividade básica
-- [ ]  Salvar
-- [ ]  Adicionar mensagens toast para as operações
-    - Marcar/desmarcar o filme como assistido, favorito;
-    - Adicionar/editar/remover anotação;
-- [ ]  Escrever pelo menos 1 **teste unitário** (ex: botão de favorito ou função de marcação)
-- [ ]  Separação clara de responsabilidades (componentes, serviços de API, etc.)
-- [ ]  Utilizar biblioteca de estilo (Styled-components, Tailwind, Shadcn-ui, etc.)
-- [ ]  Utilizar Context API ou uma solução de estado global (Redux, zustand, etc.)
-- [ ]  Utilizar solução para gerenciar estado assíncrono (axios, tanstack query, etc.)
+1. **Clone o repositório**  
+   ```bash
+   $ git clone git@github.com:kauancarniel/frontend-challenge-truckpag.git
+   $ cd ghibli-films-explorer
 
-## 💻 Sugestão de interface
+2. **Instalar dependências**
+   ```bash
+   $ npm install  ou  yarn install
 
-Segue o deploy abaixo com uma sugestão de interface para a implementação do desafio. Mas claro, sinta-se à vontade para imprimir seu estilo próprio durante a implementação:
-[Versão online](https://v0-ghibli-movie-app.vercel.app/)
-* * *
-
-📦 **Entrega**
---------------
-
-1.  Inclua um `README.md` com:
-    
-    *   Instruções de instalação e execução.
-        
-    *   Ferramentas utilizadas.
-        
-    *   Quais requisitos foram implementados.
-        
-    *   Se aplicável, como rodar os testes.
-        
-
-* * *
-
-* * *
-
-💡 **Nota**: O foco está na organização, clareza e qualidade do código — não necessariamente na completude ou complexidade. Explique suas decisões, use commits claros, e divirta-se com o desafio!
+3. **Iniciar servidor de desenvolvimento**
+   ```bash
+   $ npm run dev  ou  yarn dev
