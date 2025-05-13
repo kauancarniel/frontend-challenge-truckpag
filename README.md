@@ -54,14 +54,8 @@ Aplicação React que consome a API do Studio Ghibli para exibir filmes com func
 
 2. **Instalar dependências**
    ```bash
-  $ npm install
-   ### ou
-   ```bash
-  $ yarn install
+   $ npm install  ou  yarn install
 
 3. **Iniciar servidor de desenvolvimento**
    ```bash
-  $ npm run dev
-  ### ou
-   ```bash
-  $ yarn dev
+   $ npm run dev  ou  yarn dev
