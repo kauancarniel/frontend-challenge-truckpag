@@ -1,8 +1,9 @@
 import { useContext, useState } from 'react';
 import userContext from '../context/userContext';
 import FormCommentary from './FormCommentary';
-import './MovieCard.css';
 import type { IMovie } from '../interfaces/IMovie';
+import { toast } from 'react-toastify';
+import './MovieCard.css';
 
 function MovieCard({ movie }: { movie: IMovie }) {
   const { favoriteIds, setFavIds, watchedIds, setWatchedIds } = useContext(userContext);
@@ -12,8 +13,10 @@ function MovieCard({ movie }: { movie: IMovie }) {
     const checkWatched = watchedIds.some((m) => m === id);
     if (checkWatched) {
       setWatchedIds(watchedIds.filter((m) => m !== id));
+      toast("Removed from Watched");
     } else {
       setWatchedIds([...watchedIds, id]);
+      toast("Added to Watched");
     }
   };
 
@@ -21,8 +24,10 @@ function MovieCard({ movie }: { movie: IMovie }) {
     const checkFav = favoriteIds.some((m) => m === id);
     if (checkFav) {
       setFavIds(favoriteIds.filter((m) => m !== id));
+      toast("Removed from Favorites");
     } else {
       setFavIds([...favoriteIds, id]);
+      toast("Added from Favorites");
     }
   };
 
@@ -35,16 +40,16 @@ function MovieCard({ movie }: { movie: IMovie }) {
           alt={movie.title}
         />
         <div className="absolute top-0.5 right-0.5 flex space-x-0.5">
+            <button
+              onClick={() => addMovieToWatched(movie)}
+              className={`px-3 py-1 rounded-full text-sm font-bold ${
+                watchedIds.some(id => id === movie.id) ? "text-green-500" : "text-white"
+              }`}
+            >
+              👁
+            </button>
           <button
-            onClick={() => addMovieToWatched(movie)}
-            className={`px-3 py-1 rounded-full text-sm font-bold ${
-              watchedIds.some(id => id === movie.id) ? "text-green-500" : "text-white"
-            }`}
-          >
-            👁
-          </button>
-          <button
-            onClick={() => addMovieToFav(movie)}
+            onClick={() => {addMovieToFav(movie);}}
             className={`px-3 py-1 rounded-full text-sm font-bold ${
               favoriteIds.some(id => id === movie.id) ? "text-red-500" : "text-white"
             }`}

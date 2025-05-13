@@ -3,6 +3,7 @@ import Star from './Star';
 import './FormCommentary.css';
 import userContext from '../context/userContext';
 import MovieContext from '../context/movieContext';
+import { toast } from 'react-toastify';
 
 function FormCommentary({ id }: { id: string }) {
   const [assessment, setComment] = useState({ comment: '', rating: 0 });
@@ -31,11 +32,13 @@ const handleSubmit = () => {
     const newComments = comments.filter((c) => c.id !== id);
     setComments([...newComments, { id: id, comment: assessment.comment, rating: assessment.rating }]);
     setShowComment(true);
+    toast("Comment Edited")
   }
   else {
     setComments([...comments, { id: id, comment: assessment.comment, rating: assessment.rating }]);
     setStaticComment({ comment: assessment.comment, rating: assessment.rating });
     setShowComment(true);
+    toast("Comment Added")
   }
 
   setComment({ comment: assessment.comment, rating: assessment.rating });
@@ -50,7 +53,10 @@ const handleSubmit = () => {
 
             if (assessment.rating === 0) console.log('não é possivel adicionar um comentario sem nota');
 
-            else !showComment ? handleSubmit() : setShowComment(false);
+            else {
+              toast("Rate the movie before commenting")
+              !showComment ? handleSubmit() : setShowComment(false);
+            }
           }}
         >
           { showComment ? (

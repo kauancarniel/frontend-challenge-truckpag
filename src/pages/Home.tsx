@@ -5,6 +5,7 @@ import MovieCard from '../components/MovieCard';
 import Header from '../components/Header.js';
 import SearchBar from '../components/SearchBar';
 import Filters from '../components/Filters.js';
+import { ToastContainer } from 'react-toastify';
 
 function Home() {
   const [apiData, setApiData] = useState();
@@ -31,6 +32,18 @@ function Home() {
       { dataApi.map((movie, key) => (
         <MovieCard movie={ movie } key={ key } />
       )) }
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
+        theme="dark"
+      />
       </div>
     </div>
   )
